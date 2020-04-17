@@ -3,6 +3,7 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -19,16 +20,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
+        val diceImage: ImageView = findViewById(R.id.dice_image)
         val randomInt = (1..6).random()
-        val resultText: TextView = findViewById(R.id.result_text)
-        resultText.text = randomInt.toString()
+        val drawableResource = when (randomInt) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            6 -> R.drawable.dice_6
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(drawableResource)
         Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun countUp() {
-        val resultText: TextView = findViewById(R.id.result_text)
-        val resultTextStr = resultText.text
-        val currentInt = if (resultTextStr == "Hello World!") 0 else resultText.text.toString().toInt()
-        resultText.text = if (currentInt < 6) (currentInt + 1).toString() else currentInt.toString()
     }
 }
