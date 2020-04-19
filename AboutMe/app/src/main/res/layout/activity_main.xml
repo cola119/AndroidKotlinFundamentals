@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="myName" type="com.example.aboutme.MyName"/>
+    </data>
     <LinearLayout
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -10,7 +13,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/name"
+                android:text="@={myName.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -31,6 +34,7 @@
                 android:layout_gravity="center_horizontal" style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_marginTop="@dimen/layout_margin"/>
         <TextView
+                android:text="@={myName.nickname}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/nickaname_text" style="@style/NameStyle"
                 android:textAlignment="center" android:visibility="gone"
